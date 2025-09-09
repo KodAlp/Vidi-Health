@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Vidi_Health.Models;
 using System.Runtime.InteropServices;
 namespace Vidi_Health.Services
 {
@@ -25,7 +23,20 @@ namespace Vidi_Health.Services
         [DllImport("MathEngine.dll")]
         private static extern double JP7Female(double sum7points, int age);
 
-        double CalculateBodyFat(Measurements measurment, User user);
+        public double CalculateBodyFat(Measurements measurement, User user)
+        {
+            switch (measurement.Type)
+            {
+                case MeasurementType.NavyFormula:
+                    return CalculateNavyFormula(measurement, user);
+                case MeasurementType.JacksonPollock3:
+                    return CalculateJacksonPollock3(measurement, user);
+                case MeasurementType.JacksonPollock7:
+                    return CalculateJacksonPollock7(measurement, user);
+                default:
+                    throw new ArgumentException("Invalid measurement type");
+            }
+        }
 
         //C++ backend NavyFormula
         public double CalculateNavyFormula(Measurements measurement, User user)

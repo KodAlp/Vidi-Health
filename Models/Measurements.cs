@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace Vidi_Health.Models
 {
+    public enum MeasurementType
+    {
+        NavyFormula = 0,        // Tape measure method
+        JacksonPollock3 = 1,    // 3-point caliper
+        JacksonPollock7 = 2     // 7-point caliper
+    }
     public class Measurements
     {
         [Key]
@@ -42,11 +48,6 @@ namespace Vidi_Health.Models
 
         // Navigation Property
         public User User { get; set; }
-        public enum MeasurementType
-        {
-            NavyFormula = 0,        // Tape measure method
-            JacksonPollock3 = 1,    // 3-point caliper
-            JacksonPollock7 = 2     // 7-point caliper
-        }
+      
     }
 }
