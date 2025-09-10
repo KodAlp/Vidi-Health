@@ -49,5 +49,54 @@ extern "C"{
 			//BodyFat Percentage for Female
 		double Bodyfat_PF =  (495/Female_Density) - 450;
 		return Bodyfat_PF;
+
+	}
+
+
+
+
+
+	__declspec(dllexport)  double MifflinStJeorMale(double weight,double height , int age)
+	{
+		double bmr_Male = 10*weight + 6.25 * height - 5*age + 5;
+		return bmr_Male;
+	}
+    __declspec(dllexport) double MifflinStJeorFemale(double weight , double height , int age)
+	{
+		double bmr_Female = 10*weight+ 6.25 * weight - 5 * age - 161;
+		return bmr_Female;
+	
+	}
+	__declspec(dllexport) double CunninghamFormula(double LeanBodyMass)
+	{
+		double Bmr_for_person = 370 + (21.6*LeanBodyMass);
+		return Bmr_for_person;
+
+	}
+	__dllspec(dllexport) double CalculateTDEE(double bmr, int activity_level)
+	{
+		switch(activity_level)
+		{
+			case 0: 
+				bmr = bmr*1.2;
+				return bmr;
+				break;
+			case 1:
+				bmr = bmr*1.375;
+				return bmr;
+				break;
+			case 2:
+				bmr = bmr*1.55;
+				return bmr;
+				break;
+			case 3:
+				bmr = bmr*1.725;
+				return bmr;
+				break;
+			case 4: 
+				bmr = bmr*1.9;
+				return bmr;
+				break;
+		}
 	}
 }
