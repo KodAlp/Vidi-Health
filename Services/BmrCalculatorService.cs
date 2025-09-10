@@ -23,7 +23,7 @@ namespace Vidi_Health.Services
         {
             try
             {
-                if (measurement.Weight == -1 || measurement.Height == -1 || user.age == -1)
+                if (measurement.Weight <= 0 || measurement.Height <= 0 || user.age == -1)
                     throw new ArgumentException("Please give proper measurements for the calculation!");
 
                 if (user.gender == Gender.Male)
@@ -53,7 +53,7 @@ namespace Vidi_Health.Services
             {
                 double result;
                 
-                double Lean_body_mass = (measurement.Weight - (measurement.Weight * bodyfat)) /100;
+                double Lean_body_mass = measurement.Weight - (measurement.Weight * bodyfat /100);
                 result = CunningHamFormula(Lean_body_mass);
                 return result;
 
@@ -69,7 +69,7 @@ namespace Vidi_Health.Services
             try
             {
                 double result_bmr;
-                result_bmr = CalculateTDEE(bmr, activityLevel);
+                result_bmr = CalculateTDEE(bmr, (int)activityLevel);
                 return result_bmr;
             }
             catch (Exception e)
