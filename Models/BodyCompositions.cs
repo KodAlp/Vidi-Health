@@ -12,7 +12,7 @@
         public double BMR { get; set; } // Basal Metabolic Rate
         public double TDEE { get; set; } // Total Daily Energy Expenditure
 
-        public Calculation_type calculation { get; set; }
+        public Calculation_type Method { get; set; }
 
         public int MeasurementId { get; set; }
 
