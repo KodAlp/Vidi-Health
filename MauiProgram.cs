@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
-
+using Vidi_Health.Models;
+using Vidi_Health.Services;
 namespace Vidi_Health
 {
     public static class MauiProgram
@@ -15,8 +16,11 @@ namespace Vidi_Health
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddScoped<IBodyFatCalculatorService, BodyFatCalculatorService>();
+            builder.Services.AddScoped<IBmrCalculatorService, BmrCalculatorService>();
+            builder.Services.AddDbContext<DietContext>();
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
