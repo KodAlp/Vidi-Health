@@ -71,4 +71,10 @@
 	  <Folder Include="Services\Native\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="Platforms\Windows\MathEngine.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 </Project>

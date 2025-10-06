@@ -111,8 +111,15 @@ namespace Vidi_Health.Services.Database_Services
 
         public async Task<List<BodyCompositions>> GetUserBodyCompositionsAsync(int userId)
         {
+            // Önce kullanıcının measurement ID'lerini bul
+            var measurementIds = await _context.Measurements
+                .Where(m => m.UserId == userId)
+                .Select(m => m.Id)
+                .ToListAsync();
+
+            // Sonra bu measurement'lara ait body composition'ları getir
             return await _context.BodyCompositions
-                .Where(bc => bc.MeasurementId == userId)
+                .Where(bc => measurementIds.Contains(bc.MeasurementId))
                 .OrderByDescending(bc => bc.CalculatedAt)
                 .ToListAsync();
         }

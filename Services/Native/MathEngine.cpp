@@ -63,7 +63,7 @@ extern "C"{
 	}
     __declspec(dllexport) double MifflinStJeorFemale(double weight , double height , int age)
 	{
-		double bmr_Female = 10*weight+ 6.25 * weight - 5 * age - 161;
+		double bmr_Female = 10*weight + 6.25 * weight - 5 * age - 161;
 		return bmr_Female;
 	
 	}
@@ -73,7 +73,7 @@ extern "C"{
 		return Bmr_for_person;
 
 	}
-	__dllspec(dllexport) double CalculateTDEE(double bmr, int activity_level)
+	__declspec(dllexport) double CalculateTDEE(double bmr, int activity_level)
 	{
 		switch(activity_level)
 		{
@@ -97,6 +97,7 @@ extern "C"{
 				bmr = bmr*1.9;
 				return bmr;
 				break;
+			default: return bmr * 1.2;
 		}
 	}
 }
