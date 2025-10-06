@@ -7,7 +7,7 @@ namespace Vidi_Health.Services.Database_Services
     {
         private readonly DietContext _context;
 
-        public DatabaseService(DietContext context)
+        public DataBaseService(DietContext context)
         {
             _context = context;
         }
@@ -117,40 +117,51 @@ namespace Vidi_Health.Services.Database_Services
                 .ToListAsync();
         }
 
-        // 4. latestRecord değişkenini kullan
-        public async Task<Measurements> GetLatestMeasurementAsync(int userId)
-        {
-            // latestRecord ile en son ölçümü getir
-        }
 
         // 5. filteredMeasurements değişkenini kullan
         public async Task<List<Measurements>> GetMeasurementsByTypeAsync(int userId, MeasurementType type)
         {
-            // filteredMeasurements ile type'a göre filtrele
+            // Adım 1: UserId kontrolü
+            if (userId <= 0)
+                throw new ArgumentException("Geçersiz user ID");
+
+            // Adım 2: measurementQuery - tüm user ölçümlerini getir
+            var measurementQuery = _context.Measurements
+                .Where(m => m.UserId == userId);
+
+            // Adım 3: filteredMeasurements - type'a göre filtrele
+            List<Measurements> filteredMeasurements = await measurementQuery
+                .Where(m => m.Type == type)
+                .OrderByDescending(m => m.MeasuredAt)
+                .ToListAsync();
+
+            // Adım 4: Sonuç kontrolü
+            if (filteredMeasurements.Count == 0)
+                throw new ArgumentException($"Bu user için {type} tipinde ölçüm bulunamadı");
+
+            return filteredMeasurements;
         }
 
-        // 6. savedComposition değişkenini kullan
-        public async Task<BodyCompositions> SaveBodyCompositionAsync(BodyCompositions bodyComp)
-        {
-            // savedComposition ile kaydetme işlemi yap
-        }
 
-        // 7. entityValidation değişkenini kullan
-        public async Task<User> UpdateUserAsync(User user)
-        {
-            // entityValidation ile user null kontrolü yap
-        }
-
-        // 8. asyncOperation değişkenini kullan
-        public async Task<User> CreateUserAsync(User user)
-        {
-            // asyncOperation ile Add işlemini sakla
-        }
 
         // 9. queryResult değişkenini kullan
         public async Task<User> FindUserByNameAsync(string name)
         {
-            // queryResult ile isim araması yap
+            // Adım 1: İsim kontrolü
+            if (string.IsNullOrEmpty(name))
+                throw new ArgumentException("İsim boş olamaz");
+
+            // Adım 2: queryResult - veritabanında isim araması
+            User queryResult = await _context.Users
+                .Where(u => u.name == name)
+                .FirstOrDefaultAsync();
+
+            // Adım 3: Bulunamadı kontrolü
+            if (queryResult == null)
+                throw new ArgumentException($"{name} isimli kullanıcı bulunamadı");
+
+            // Adım 4: Kullanıcıyı döndür
+            return queryResult;
         }
     }
 }
