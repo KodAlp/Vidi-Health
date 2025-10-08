@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Vidi_Health.Models;
 using Vidi_Health.Services;
 namespace Vidi_Health
@@ -18,7 +19,11 @@ namespace Vidi_Health
 
             builder.Services.AddScoped<IBodyFatCalculatorService, BodyFatCalculatorService>();
             builder.Services.AddScoped<IBmrCalculatorService, BmrCalculatorService>();
-            builder.Services.AddDbContext<DietContext>();
+            builder.Services.AddDbContext<DietContext>(options =>
+            {
+                string dbPath = Path.Combine(FileSystem.AppDataDirectory, "diet_tracker.db");
+                options.UseSqlite($"Data Source={dbPath}");
+            });
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

@@ -46,13 +46,14 @@ namespace Vidi_Health.Services.Database_Services
         {
             if (entity is User user)
             {
-                return !string.IsNullOrEmpty(user.name) &&
+               return !string.IsNullOrEmpty(user.name) &&
                        user.dateOfBirth != default(DateTime) &&
                        user.dateOfBirth < DateTime.Now;
             }
             if (entity is Measurements measurement)
             {
                 return measurement.Height > 0 && measurement.Weight > 0;
+            
             }
             return true;
         }

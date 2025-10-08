@@ -1,5 +1,6 @@
 ﻿using Vidi_Health.Models;
 using System.Runtime.InteropServices;
+using Microsoft.Maui.Animations;
 namespace Vidi_Health.Services
 {
     public class BodyFatCalculatorService : IBodyFatCalculatorService
@@ -82,6 +83,10 @@ namespace Vidi_Health.Services
         {
             try
             {
+
+
+                if (measurement == null)
+                    throw new ArgumentNullException("Kayıtlı ölçü bulunamadı");
 
                 if (user.gender == Gender.Male)
                 {
