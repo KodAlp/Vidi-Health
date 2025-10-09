@@ -47,7 +47,7 @@ namespace Vidi_Health.Models
         public DateTime MeasuredAt { get; set; } = DateTime.Now;
 
         // Navigation Property
-        public User User { get; set; }
+        public User? User { get; set; }
       
     }
 }

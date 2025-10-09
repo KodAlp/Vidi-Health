@@ -45,16 +45,18 @@ namespace Vidi_Health.Services
             double result;
             try
             {
+                ArgumentNullException.ThrowIfNull(measurement);
+
                 if (!measurement.NeckCircumference.HasValue || !measurement.WaistCircumference.HasValue)
                     throw new ArgumentException("For navy formula need waist and neck measurements!");
 
-                if (user.gender == Gender.Male)
+                if (user.Gender == Gender.Male)
                 {
                     result = NavyMale(measurement.WaistCircumference.Value,
                         measurement.NeckCircumference.Value, measurement.Height);
 
                 }
-                else if (user.gender == Gender.Female)
+                else if (user.Gender == Gender.Female)
                 {
                     if (!measurement.HipCircumference.HasValue)
                         throw new ArgumentException("For navy formula for femal need a proper hip measurement.");
@@ -87,32 +89,39 @@ namespace Vidi_Health.Services
 
                 if (measurement == null)
                     throw new ArgumentNullException("Kayıtlı ölçü bulunamadı");
-
-                if (user.gender == Gender.Male)
-                {
-                    double result;
-                    if (!measurement.ChestSkinfold.HasValue || !measurement.AbdominalSkinfold.HasValue ||
-                        !measurement.ThighSkinfold.HasValue || user.age == -1)
-                        throw new ArgumentException("Please satisfy the measurements first.");
-
-
-                    result = JP3Male(measurement.ChestSkinfold.Value, measurement.AbdominalSkinfold.Value,
-                        measurement.ThighSkinfold.Value, user.age);
-                    return result;
-                }
-                else if (user.gender == Gender.Female)
-                {
-                    double result;
-                    result = JP3Male(measurement.TricepsSkinfold.Value, measurement.AbdominalSkinfold.Value,
-                        measurement.SuprailiacSkinfold.Value, user.age);
-                    return result;
-
-                }
                 else
                 {
-                    throw new ArgumentException("Please Choose proper gender");
-                }
+                    if (user.Gender == Gender.Male)
+                    {
+                        double result;
+                        if (!measurement.ChestSkinfold.HasValue || !measurement.AbdominalSkinfold.HasValue ||
+                            !measurement.ThighSkinfold.HasValue || user.Age == -1)
+                            throw new ArgumentException("Please satisfy the measurements first.");
 
+
+                        result = JP3Male(measurement.ChestSkinfold.Value, measurement.AbdominalSkinfold.Value,
+                            measurement.ThighSkinfold.Value, user.Age);
+                        return result;
+                    }
+                    else if (user.Gender == Gender.Female)
+                    {
+                        double result;
+                        
+                        if (!measurement.TricepsSkinfold.HasValue || !measurement.AbdominalSkinfold.HasValue ||
+                         !measurement.SuprailiacSkinfold.HasValue || user.Age == -1)
+                            throw new ArgumentException("Please satisfy the measurements first.");
+
+                        result = JP3Male(measurement.TricepsSkinfold.Value, measurement.AbdominalSkinfold.Value,
+                            measurement.SuprailiacSkinfold.Value, user.Age);
+                        return result;
+
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Please Choose proper gender");
+                    }
+
+                }
             }
             catch
             {
@@ -125,21 +134,27 @@ namespace Vidi_Health.Services
         {
             try
             {
-                if (measurement == null || user == null)
+                if (!measurement.SuprailiacSkinfold.HasValue || !measurement.TricepsSkinfold.HasValue || !measurement.AbdominalSkinfold.HasValue ||
+                    !measurement.ThighSkinfold.HasValue || !measurement.SubscapularSkinfold.HasValue || !measurement.MidaxillarySkinfold.HasValue ||
+                    !measurement.ChestSkinfold.HasValue)
+                {
                     throw new ArgumentNullException("Please give proper measurements for calculation.");
+                }
                 double result, jp7;
 
                 jp7 = measurement.TricepsSkinfold.Value + measurement.AbdominalSkinfold.Value + measurement.ThighSkinfold.Value +
                     measurement.SuprailiacSkinfold.Value + measurement.SubscapularSkinfold.Value + measurement.MidaxillarySkinfold.Value
                     + measurement.ChestSkinfold.Value;
-                if (user.gender == Gender.Female)
+
+
+                if (user.Gender == Gender.Female)
                 {
-                    result = JP7Female(jp7, user.age);
+                    result = JP7Female(jp7, user.Age);
                     return result;
                 }
-                else if (user.gender == Gender.Male)
+                else if (user.Gender == Gender.Male)
                 {
-                    result = JP7Male(jp7, user.age);
+                    result = JP7Male(jp7, user.Age);
                     return result;
                 }
                 else

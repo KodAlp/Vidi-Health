@@ -7,7 +7,7 @@ namespace Vidi_Health.Services.Database_Services
 
         // User operations
         Task<User> CreateUserAsync(User user);
-        Task<User> GetUserByIdAsync(int userId);
+        Task<User?> GetUserByIdAsync(int userId);
         Task<List<User>> GetAllUsersAsync();
         Task<User> UpdateUserAsync(User user);
         Task<bool> DeleteUserAsync(int userId);
@@ -15,7 +15,7 @@ namespace Vidi_Health.Services.Database_Services
         // Measurement operations
         Task<Measurements> AddMeasurementAsync(Measurements measurement);
         Task<List<Measurements>> GetUserMeasurementsAsync(int userId);
-        Task<Measurements> GetLatestMeasurementAsync(int userId);
+        Task<Measurements?> GetLatestMeasurementAsync(int userId);
 
         // BodyComposition operations
         Task<BodyCompositions> SaveBodyCompositionAsync(BodyCompositions bodyComp);

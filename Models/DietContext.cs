@@ -11,6 +11,7 @@ namespace Vidi_Health.Models
         // Parametreli constructor (runtime için)
         public DietContext(DbContextOptions<DietContext> options) : base(options)
         {
+
         }
 
 

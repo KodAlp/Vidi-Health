@@ -28,11 +28,11 @@ namespace Vidi_Health.Services.Database_Services
             return user;
         }
 
-        public async Task<User> GetUserByIdAsync(int userId)
+        public async Task<User?> GetUserByIdAsync(int userId)
         {
             return await _context.Users
-                .Include(u => u.measurements)
-                .Include(u => u.bodyCompositions)
+                .Include(u => u.Measurements)
+                .Include(u => u.BodyCompositions)
                 .FirstOrDefaultAsync(u => u.Id == userId);
         }
 
@@ -42,20 +42,21 @@ namespace Vidi_Health.Services.Database_Services
         }
 
         // Validation method
-        public async Task<bool> ValidateDataAsync<T>(T entity)
+        public Task<bool> ValidateDataAsync<T>(T entity)
         {
             if (entity is User user)
             {
-               return !string.IsNullOrEmpty(user.name) &&
-                       user.dateOfBirth != default(DateTime) &&
-                       user.dateOfBirth < DateTime.Now;
+                return Task.FromResult(
+                    !string.IsNullOrEmpty(user.Name) &&
+                    user.DateOfBirth != default(DateTime) &&
+                    user.DateOfBirth < DateTime.Now
+                );
             }
             if (entity is Measurements measurement)
             {
-                return measurement.Height > 0 && measurement.Weight > 0;
-            
+                return Task.FromResult(measurement.Height > 0 && measurement.Weight > 0);
             }
-            return true;
+            return Task.FromResult(true);
         }
 
         // User Operations - devam
@@ -95,7 +96,7 @@ namespace Vidi_Health.Services.Database_Services
                 .ToListAsync();
         }
 
-        public async Task<Measurements> GetLatestMeasurementAsync(int userId)
+        public async Task<Measurements?> GetLatestMeasurementAsync(int userId)
         {
             return await _context.Measurements
                 .Where(m => m.UserId == userId)
@@ -151,17 +152,16 @@ namespace Vidi_Health.Services.Database_Services
         }
 
 
-
         // 9. queryResult değişkenini kullan
-        public async Task<User> FindUserByNameAsync(string name)
+        public async Task<User?> FindUserByNameAsync(string name)
         {
             // Adım 1: İsim kontrolü
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentException("İsim boş olamaz");
 
             // Adım 2: queryResult - veritabanında isim araması
-            User queryResult = await _context.Users
-                .Where(u => u.name == name)
+            User? queryResult = await _context.Users
+                .Where(u => u.Name == name)
                 .FirstOrDefaultAsync();
 
             // Adım 3: Bulunamadı kontrolü
