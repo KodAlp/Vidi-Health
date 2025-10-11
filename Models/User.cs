@@ -25,8 +25,8 @@ namespace Vidi_Health.Models
         [Required]
         public Ethnicity Your_ethnicity { get; set; }
 
-        public List<Measurements> Measurements { get; set; } = new();
-        public List<BodyCompositions> BodyCompositions { get; set; } = new();
+        public List<Measurements> Measurements { get; set; } = [];
+        public List<BodyCompositions> BodyCompositions { get; set; } = [];
         public int Age => DateTime.Now.Year - DateOfBirth.Year;
     }
 

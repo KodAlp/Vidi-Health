@@ -3,14 +3,9 @@ using Vidi_Health.Models;
 
 namespace Vidi_Health.Services.Database_Services
 {
-    public class DataBaseService : IDataBaseService
+    public class DataBaseService(DietContext _context) : IDataBaseService
     {
-        private readonly DietContext _context;
 
-        public DataBaseService(DietContext context)
-        {
-            _context = context;
-        }
 
         public async Task InitializeDatabaseAsync()
         {
