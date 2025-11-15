@@ -14,6 +14,11 @@ namespace Vidi_Health
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            // Database path setup
+            string dbPath = Path.Combine(
+                FileSystem.AppDataDirectory,
+                "diet_tracker.db"
+            );
 
 #if DEBUG
     		builder.Logging.AddDebug();

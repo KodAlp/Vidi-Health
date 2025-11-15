@@ -71,4 +71,25 @@
 	  <Folder Include="Services\Native\" />
 	</ItemGroup>
 
+<<<<<<< Updated upstream
+=======
+	<ItemGroup>
+	  <Compile Update="Pages\App_enter.xaml.cs">
+	    <DependentUpon>App_enter.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\App_enter.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Platforms\Windows\MathEngine.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+>>>>>>> Stashed changes
 </Project>

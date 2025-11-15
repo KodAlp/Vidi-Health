@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Vidi_Health.Pages.App_enter"
+             Title="Apllication Entrance">
+
+        
+
+    <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing=" 15"
+                             
+            <Label Text="Welcome to our diet program!" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,20,0,30"/>
+
+            <Label Text="Your name:"  FontSize="16"/>
+                <Entry x:Name="NameEntry"
+                   MaxLength ="50"/>
+
+                <!-- Doğum Tarihi -->
+                <Label Text="Doğum Tarihiniz:" FontSize="16" Margin="0,10,0,0"/>
+                <DatePicker x:Name="BirthDatePicker"
+                        MaximumDate="{x:Static x:DateTime.Now}"
+                        MinimumDate="1940-01-01"/>
+
+                <!-- Cinsiyet -->
+                <Label Text="Cinsiyet:" FontSize="16" Margin="0,10,0,0"/>
+                <Picker x:Name="GenderPicker" Title="Seçiniz">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Erkek</x:String>
+                            <x:String>Kadın</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <!-- Etnik Köken -->
+                <Label Text="Etnik Köken:" FontSize="16" Margin="0,10,0,0"/>
+                <Picker x:Name="EthnicityPicker" Title="Seçiniz">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Kafkas</x:String>
+                            <x:String>Asya</x:String>
+                            <x:String>Afrika</x:String>
+                            <x:String>Hispanik</x:String>
+                            <x:String>Orta Doğu</x:String>
+                            <x:String>Yerli Amerikan</x:String>
+                            <x:String>Pasifik Adaları</x:String>
+                            <x:String>Güney Asya</x:String>
+                            <x:String>Doğu Asya</x:String>
+                            <x:String>Karışık</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <!-- Aktivite Seviyesi -->
+                <Label Text="Aktivite Seviyeniz:" FontSize="16" Margin="0,10,0,0"/>
+                <Picker x:Name="ActivityLevelPicker" Title="Seçiniz">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Hareketsiz (Ofis işi)</x:String>
+                            <x:String>Hafif Aktif (Haftada 1-3 gün)</x:String>
+                            <x:String>Orta Aktif (Haftada 3-5 gün)</x:String>
+                            <x:String>Çok Aktif (Haftada 6-7 gün)</x:String>
+                            <x:String>Süper Aktif (Günde 2x antrenman)</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <!-- Kaydet Butonu -->
+                <Button Text="Kaydet ve Devam Et"
+                    x:Name="SaveButton"
+                    Clicked="OnSaveClicked"
+                    BackgroundColor="#512BD4"
+                    TextColor="White"
+                    FontSize="18"
+                    Margin="0,30,0,0"
+                    HeightRequest="50"
+                    CornerRadius="10"/>
+            </VerticalStackLayout>
+        </ScrollView>
+</ContentPage>
+    
