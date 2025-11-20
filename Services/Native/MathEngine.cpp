@@ -73,7 +73,7 @@ extern "C"{
 		return Bmr_for_person;
 
 	}
-	__dllspec(dllexport) double CalculateTDEE(double bmr, int activity_level)
+	__declspec(dllexport) double CalculateTDEE(double bmr, int activity_level)
 	{
 		switch(activity_level)
 		{

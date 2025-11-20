@@ -29,12 +29,13 @@ namespace Vidi_Health.Models
         public List <BodyCompositions> bodyCompositions { get; set; } = new();
         public int age => DateTime.Now.Year - dateOfBirth.Year;
     }
-
+    //Checkbox again
     public enum Gender
     {
         Male,
         Female
     }
+    //ethnicity(need to add a warning about ethnicity actually effects the results
     public enum Ethnicity
     {
         Caucasian =0,
@@ -48,6 +49,7 @@ namespace Vidi_Health.Models
         EastAsian =8,
         Mixed =9,
     }
+    //For calculaating daily intake
     public enum ActivityLevel
     {
         Sedentary =0, //1.2 Little or no exercise

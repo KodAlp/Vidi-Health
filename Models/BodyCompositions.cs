@@ -2,20 +2,30 @@
 {
     public class BodyCompositions
     {
+        //Hesaplanan Yağ Oranı
         public double BodyFatPercentage { get; set; }
-        public double LeanBodyMass { get; set; } // in kg
 
-        public double FatMass { get; set; } // in kg
+        //Yağsız Vücut Kitlesi (KG)
+        public double LeanBodyMass { get; set; } 
 
+        //Yağ miktarı (KG)
+        public double FatMass { get; set; } 
+
+        //Hesaplanma tarihi / Calculating date For tracking progress
         public DateTime CalculatedAt { get; set; } = DateTime.Now;
 
-        public double BMR { get; set; } // Basal Metabolic Rate
-        public double TDEE { get; set; } // Total Daily Energy Expenditure
+        //Bazal Metabolizma Hızı / Basal Metabolic Rate
+        public double BMR { get; set; } 
+
+        //Günlük gerekli enerji miktarı / Total Daily Energy Expenditure
+        public double TDEE { get; set; } 
 
         public Calculation_type Method { get; set; }
 
+        //Database access
         public int MeasurementId { get; set; }
 
+        //Checkbox index taking
         public enum Calculation_type
         {
             NavyFormula = 0,

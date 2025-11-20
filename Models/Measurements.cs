@@ -14,7 +14,7 @@ namespace Vidi_Health.Models
         JacksonPollock7 = 2     // 7-point caliper
     }
     public class Measurements
-    {
+    {   
         [Key]
         public int Id { get; set; }
 
@@ -25,7 +25,7 @@ namespace Vidi_Health.Models
         public MeasurementType Type { get; set; }
 
         [Required]
-        public double Height { get; set; } // in cm will add feet later o
+        public double Height { get; set; } // in cm will add feet later on
 
         [Required]
         public double Weight { get; set; } // in kg will add lbs later on

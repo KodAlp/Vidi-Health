@@ -71,8 +71,6 @@
 	  <Folder Include="Services\Native\" />
 	</ItemGroup>
 
-<<<<<<< Updated upstream
-=======
 	<ItemGroup>
 	  <Compile Update="Pages\App_enter.xaml.cs">
 	    <DependentUpon>App_enter.xaml</DependentUpon>
@@ -91,5 +89,4 @@
 	  </None>
 	</ItemGroup>
 
->>>>>>> Stashed changes
 </Project>
