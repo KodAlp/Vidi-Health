@@ -12,7 +12,7 @@
 
             <!-- Logo/İkon Alanı -->
             <Image
-                Source="dotnet_bot.png"
+                Source="vidihealth_icon.png"
                 HeightRequest="200"
                 Aspect="AspectFit"
                 SemanticProperties.Description="Vidi Health Logo" />
@@ -25,7 +25,7 @@
 
             <!-- Alt Başlık -->
             <Label
-                Text="Vücut Kompozisyonu ve Kalori Takibi"
+                Text="Programa Hoşgeldiniz!"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
                 HorizontalOptions="Center"
@@ -33,7 +33,7 @@
 
             <!-- Açıklama -->
             <Label
-                Text="Evde kolayca vücut yağ oranınızı ölçün ve doğru kalori hesaplaması yapın."
+                Text="Bir diyet için ihtiyacınız olan herşey burada!"
                 FontSize="14"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
@@ -43,20 +43,20 @@
             <!-- Başla Butonu -->
             <Button
                 x:Name="StartButton"
-                Text="Başlayalım"
+                Text="Hadi Başlayalım!"
                 SemanticProperties.Hint="Kullanıcı kaydına geç"
                 Clicked="OnStartClicked"
-                BackgroundColor="#512BD4"
-                TextColor="White"
+                BackgroundColor="#423416"
+                TextColor="Black"
                 FontSize="18"
                 Margin="0,40,0,0"
                 HeightRequest="60"
                 CornerRadius="15"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Center" />
 
             <!-- Bilgi Metni -->
             <Label
-                Text="✓ Navy Formula&#10;✓ Jackson-Pollock Metodu&#10;✓ BMR/TDEE Hesaplama"
+                Text="Kişisel bilgileriniz cihazınızda kullanılmak üzere kayıt tutulacaktır"
                 FontSize="12"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"

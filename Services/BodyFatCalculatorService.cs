@@ -101,7 +101,7 @@ namespace Vidi_Health.Services
                        !measurement.SuprailiacSkinfold.HasValue || user.Age == -1)
                         throw new ArgumentException("Please satisfy the measurements first.");
 
-                    result = JP3Male(measurement.TricepsSkinfold.Value, measurement.AbdominalSkinfold.Value,
+                    result = JP3Female(measurement.TricepsSkinfold.Value, measurement.AbdominalSkinfold.Value,
                         measurement.SuprailiacSkinfold.Value, user.Age);
                     return result;
 

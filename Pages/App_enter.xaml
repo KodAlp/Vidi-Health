@@ -9,67 +9,83 @@
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing=" 15">
 
-            <Label Text="Welcome to our diet program!" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,20,0,30"/>
+            <Label Text="Öncelikle sizi tanıyalım!" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,20,0,30"/>
 
-            <Label Text="Your name:"  FontSize="16"/>
-                <Entry x:Name="NameEntry"
-                   MaxLength ="50"/>
+            <Label Text="İsminiz:" FontSize="16"/>
+            <Entry x:Name="NameEntry"
+                   MaxLength ="50"
+                   HeightRequest="36"
+                   WidthRequest="300"
+                   HorizontalOptions="Start"
+             />
 
             <!-- Cinsiyet -->
-                <Label Text="Cinsiyet:" FontSize="16" Margin="0,10,0,0"/>
-                <Picker x:Name="GenderPicker" Title="Seçiniz">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Erkek</x:String>
-                            <x:String>Kadın</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+
+            <Label Text="Cinsiyetiniz: (formüller değişecektir)" FontSize="16" Margin="0,10,0,0"/>
+            <Picker x:Name="GenderPicker"
+                HeightRequest="36"
+                HorizontalOptions="Start"
+                WidthRequest="300">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Erkek</x:String>
+                        <x:String>Kadın</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
 
                 <!-- Etnik Köken -->
-                <Label Text="Etnik Köken:" FontSize="16" Margin="0,10,0,0"/>
-                <Picker x:Name="EthnicityPicker" Title="Seçiniz">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Kafkas</x:String>
-                            <x:String>Asya</x:String>
-                            <x:String>Afrika</x:String>
-                            <x:String>Hispanik</x:String>
-                            <x:String>Orta Doğu</x:String>
-                            <x:String>Yerli Amerikan</x:String>
-                            <x:String>Pasifik Adaları</x:String>
-                            <x:String>Güney Asya</x:String>
-                            <x:String>Doğu Asya</x:String>
-                            <x:String>Karışık</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+            <Label Text="Etnik Köken:" FontSize="16" Margin="0,10,0,0"/>
+            <Picker x:Name="EthnicityPicker"
+                HeightRequest="36"
+                HorizontalOptions="Start"
+                WidthRequest="300">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Kafkas</x:String>
+                        <x:String>Asya</x:String>
+                        <x:String>Afrika</x:String>
+                        <x:String>Hispanik</x:String>
+                        <x:String>Orta Doğu</x:String>
+                        <x:String>Yerli Amerikan</x:String>
+                        <x:String>Pasifik Adaları</x:String>
+                        <x:String>Güney Asya</x:String>
+                        <x:String>Doğu Asya</x:String>
+                        <x:String>Karışık</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+             </Picker>
 
-                <!-- Aktivite Seviyesi -->
-                <Label Text="Aktivite Seviyeniz:" FontSize="16" Margin="0,10,0,0"/>
-                <Picker x:Name="ActivityLevelPicker" Title="Seçiniz">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Hareketsiz (Ofis işi)</x:String>
-                            <x:String>Hafif Aktif (Haftada 1-3 gün)</x:String>
-                            <x:String>Orta Aktif (Haftada 3-5 gün)</x:String>
-                            <x:String>Çok Aktif (Haftada 6-7 gün)</x:String>
-                            <x:String>Süper Aktif (Günde 2x antrenman)</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+            <!-- Aktivite Seviyesi -->
+            <Label Text="Aktiflik Seviyeniz:" FontSize="16" Margin="0,10,0,0"/>
+            <Picker x:Name="ActivityLevelPicker"
+                HeightRequest="36"
+                HorizontalOptions="Start"
+                WidthRequest="300">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Hareketsiz (Ofis işi)</x:String>
+                        <x:String>Hafif Aktif (Haftada 1-3 gün)</x:String>
+                        <x:String>Orta Aktif (Haftada 3-5 gün)</x:String>
+                        <x:String>Çok Aktif (Haftada 6-7 gün)</x:String>
+                        <x:String>Süper Aktif (Günde 2x antrenman)</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
 
                 <!-- Kaydet Butonu -->
-                <Button Text="Kaydet ve Devam Et"
-                    x:Name="SaveButton"
-                    Clicked="OnSaveClicked"
-                    BackgroundColor="#512BD4"
-                    TextColor="White"
-                    FontSize="18"
-                    Margin="0,30,0,0"
-                    HeightRequest="50"
-                    CornerRadius="10"/>
-            </VerticalStackLayout>
-        </ScrollView>
+            <Button Text="Devam Et"
+                x:Name="SaveButton"
+                Clicked="OnSaveClicked"
+                BackgroundColor="#8F670B"
+                TextColor="Grey"
+                FontSize="18"
+                Margin="0,30,0,0"
+                HeightRequest="50"
+                WidthRequest="120"
+                HorizontalOptions="Center"
+                CornerRadius="10"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
     
