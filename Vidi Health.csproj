@@ -68,10 +68,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Services\Native\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Compile Update="Pages\App_enter.xaml.cs">
 	    <DependentUpon>App_enter.xaml</DependentUpon>
 	  </Compile>
@@ -87,6 +83,10 @@
 	  <None Update="Platforms\Windows\MathEngine.dll">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Services\Database Services\" />
 	</ItemGroup>
 
 </Project>

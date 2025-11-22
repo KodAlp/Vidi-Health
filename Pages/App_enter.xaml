@@ -7,21 +7,15 @@
         
 
     <ScrollView>
-            <VerticalStackLayout Padding="20" Spacing=" 15"
-                             
+        <VerticalStackLayout Padding="20" Spacing=" 15">
+
             <Label Text="Welcome to our diet program!" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,20,0,30"/>
 
             <Label Text="Your name:"  FontSize="16"/>
                 <Entry x:Name="NameEntry"
                    MaxLength ="50"/>
 
-                <!-- Doğum Tarihi -->
-                <Label Text="Doğum Tarihiniz:" FontSize="16" Margin="0,10,0,0"/>
-                <DatePicker x:Name="BirthDatePicker"
-                        MaximumDate="{x:Static x:DateTime.Now}"
-                        MinimumDate="1940-01-01"/>
-
-                <!-- Cinsiyet -->
+            <!-- Cinsiyet -->
                 <Label Text="Cinsiyet:" FontSize="16" Margin="0,10,0,0"/>
                 <Picker x:Name="GenderPicker" Title="Seçiniz">
                     <Picker.ItemsSource>
