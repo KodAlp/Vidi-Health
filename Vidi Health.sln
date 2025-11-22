@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vidi Health", "Vidi Health.csproj", "{AD105E5B-ADB4-4A94-8C0E-3A6502439556}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9F03431C-8004-4F5A-892A-387B05055CC9} = {9F03431C-8004-4F5A-892A-387B05055CC9}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathEngine", "..\Math_Functions\Math_Functions.vcxproj", "{9F03431C-8004-4F5A-892A-387B05055CC9}"
 EndProject

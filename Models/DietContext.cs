@@ -8,10 +8,6 @@ namespace Vidi_Health.Models
         public DbSet<Measurements> Measurements { get; set; }
         public DbSet<BodyCompositions> BodyCompositions { get; set; }
 
-        public DietContext(DbContextOptions<DietContext> options) : base(options)
-        {
-
-        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if(!optionsBuilder.IsConfigured)

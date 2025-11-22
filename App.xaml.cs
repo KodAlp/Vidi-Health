@@ -17,10 +17,8 @@ namespace Vidi_Health
             InitializeDatabaseAsync();
 
             MainPage = new AppShell();
-
-
         }
-        private async void InitializeDatabaseAsync()
+        private static async void InitializeDatabaseAsync()
         {
             try
             {

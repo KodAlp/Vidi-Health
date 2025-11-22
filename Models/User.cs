@@ -4,30 +4,32 @@ namespace Vidi_Health.Models
 {
     public class User
     {
+        private static readonly List<BodyCompositions> bodyCompositions = new();
+
         //Primary Key
         [Key]
         public int Id { get; set; }
 
         [Required]
         [MaxLength(80)] // Can you maximum 80 characters for the name
-        public string name { get; set; }
+        public string? Name { get; set; }
 
         [Required]
-        public DateTime dateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         [Required]
-        public Gender gender { get; set; }
+        public Gender Gender { get; set; }
         [Required]
-        public ActivityLevel activityLevel { get; set; }
+        public ActivityLevel ActivityLevel { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [Required]
-        public Ethnicity your_ethnicity { get; set; }
+        public Ethnicity Your_ethnicity { get; set; }
 
-        public List <Measurements> measurements { get; set; } = new();
-        public List <BodyCompositions> bodyCompositions { get; set; } = new();
-        public int age => DateTime.Now.Year - dateOfBirth.Year;
+        public List <Measurements> Measurements { get; set; } = new();
+        public List<BodyCompositions> BodyCompositions { get; set; } = bodyCompositions;
+        public int Age => DateTime.Now.Year - DateOfBirth.Year;
     }
     //Checkbox again
     public enum Gender

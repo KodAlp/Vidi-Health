@@ -23,17 +23,17 @@ namespace Vidi_Health.Services
         {
             try
             {
-                if (measurement.Weight <= 0 || measurement.Height <= 0 || user.age == -1)
+                if (measurement.Weight <= 0 || measurement.Height <= 0 || user.Age == -1)
                     throw new ArgumentException("Please give proper measurements for the calculation!");
 
-                if (user.gender == Gender.Male)
+                if (user.Gender == Gender.Male)
                 {
-                    double result = MifflinStJeorMale(measurement.Weight, measurement.Height, user.age);
+                    double result = MifflinStJeorMale(measurement.Weight, measurement.Height, user.Age);
                     return result;
                 }
-                else if (user.gender == Gender.Female)
+                else if (user.Gender == Gender.Female)
                 {
-                    double result = MifflinStJeorFemale(measurement.Weight, measurement.Height, user.age);
+                    double result = MifflinStJeorFemale(measurement.Weight, measurement.Height, user.Age);
                     return result;
                 }
                 else

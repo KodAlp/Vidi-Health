@@ -35,7 +35,6 @@ public partial class App_enter : ContentPage
 
         // Geçici - Database olmadan test
         string message = $"Ýsim: {NameEntry.Text}\n" +
-                       $"Doðum: {BirthDatePicker.Date.ToShortDateString()}\n" +
                        $"Cinsiyet: {GenderPicker.SelectedItem}\n" +
                        $"Köken: {EthnicityPicker.SelectedItem}\n" +
                        $"Aktivite: {ActivityLevelPicker.SelectedItem}";
