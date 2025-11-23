@@ -56,24 +56,14 @@
                 </Picker.ItemsSource>
              </Picker>
 
-            <!-- Aktivite Seviyesi -->
-            <Label Text="Aktiflik Seviyeniz:" FontSize="16" Margin="0,10,0,0"/>
-            <Picker x:Name="ActivityLevelPicker"
+            <Label Text="Doğum tarihi:" FontSize="16" Margin="0,10,0,0"/>
+            <DatePicker x:Name="BirthDatePicker"
+                Format="dd/MM/yyyy"
+                WidthRequest="300"
                 HeightRequest="36"
-                HorizontalOptions="Start"
-                WidthRequest="300">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Hareketsiz (Ofis işi)</x:String>
-                        <x:String>Hafif Aktif (Haftada 1-3 gün)</x:String>
-                        <x:String>Orta Aktif (Haftada 3-5 gün)</x:String>
-                        <x:String>Çok Aktif (Haftada 6-7 gün)</x:String>
-                        <x:String>Süper Aktif (Günde 2x antrenman)</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                HorizontalOptions="Start"/>
 
-                <!-- Kaydet Butonu -->
+            <!-- Kaydet Butonu -->
             <Button Text="Devam Et"
                 x:Name="SaveButton"
                 Clicked="OnSaveClicked"

@@ -15,10 +15,9 @@ namespace Vidi_Health
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
             // Database path setup
-            /*string dbPath = Path.Combine(
+            string dbPath = Path.Combine(
                 FileSystem.AppDataDirectory,
-                "diet_tracker.db"
-            );*/
+                "diet_tracker.db");
 
             builder.UseMauiApp<App>();
 #if DEBUG

@@ -72,10 +72,16 @@
 	  <Compile Update="Pages\App_enter.xaml.cs">
 	    <DependentUpon>App_enter.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\Hall_Page.xaml.cs">
+	    <DependentUpon>Hall_Page.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Pages\App_enter.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Hall_Page.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

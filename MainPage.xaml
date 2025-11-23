@@ -13,6 +13,7 @@
             <!-- Logo/İkon Alanı -->
             <Image
                 Source="vidihealth_icon.png"
+                Background="Transparent"
                 HeightRequest="200"
                 Aspect="AspectFit"
                 SemanticProperties.Description="Vidi Health Logo" />

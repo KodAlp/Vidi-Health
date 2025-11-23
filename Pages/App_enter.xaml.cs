@@ -1,11 +1,14 @@
+using System.Globalization;
+
 namespace Vidi_Health.Pages;
 
 public partial class App_enter : ContentPage
 {
-	public App_enter()
+
+    public App_enter()
 	{
 		InitializeComponent();
-	}
+    }
     private async void OnSaveClicked(object sender, EventArgs e)
     {
         // Validation
@@ -27,21 +30,17 @@ public partial class App_enter : ContentPage
             return;
         }
 
-        if (ActivityLevelPicker.SelectedIndex == -1)
-        {
-            await DisplayAlert("Hata", "Lütfen aktivite seviyenizi seçiniz", "Tamam");
-            return;
-        }
 
         // Geçici - Database olmadan test
         string message = $"Ýsim: {NameEntry.Text}\n" +
                        $"Cinsiyet: {GenderPicker.SelectedItem}\n" +
-                       $"Köken: {EthnicityPicker.SelectedItem}\n" +
-                       $"Aktivite: {ActivityLevelPicker.SelectedItem}";
+                       $"Köken: {EthnicityPicker.SelectedItem}\n";
 
         await DisplayAlert("Kayýt Baþarýlý", message, "Tamam");
-
+        //DisplayAlert ekrana popup çýkarýyor
         // Sonraki sayfaya geç (þimdilik MainPage'e dön)
         await Navigation.PopAsync();
     }
+
+   
 }

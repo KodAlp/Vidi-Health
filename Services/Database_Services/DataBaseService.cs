@@ -1,17 +1,62 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using Vidi_Health.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Vidi_Health.Services.Database_Services
 {
     public class DataBaseService(DietContext _context) : IDataBaseService
     {
-
-
+        private string connectionstring = "Data Soruce = verilerin.db";
         public async Task InitializeDatabaseAsync()
         {
             await _context.Database.EnsureCreatedAsync();
         }
 
+        //It will have information about User,Id,Mail,
+        
+        /*Measurements, Kilo , Boy, Etnik köken, Cinsiyet
+        NeckCircumference ,WaistCircumference , HipCircumference
+        ChestSkinfold, AbdominalSkinfold,ThighSkinfold
+        TricepsSkinfold,SuprailiacSkinfold,MidaxillarySkinfold
+        SubscapularSkinfold,MeasuredAt*/
+        
+        /*BodyCompositions Bf Percentage
+         LeanBodyMass, FatMass , BMR, TDEE
+        Measurement Id*/
+        public void CreateTable_ForUser() 
+        {
+            using (var connection = new SqliteConnection(connectionstring))
+            {
+                string createTableQuery = @"
+                CREATE TABLE IF NOT EXISTS USER(
+                ID Integer PRIMARY KEY AUTOINCREMENT,
+                NAME TEXT NOT NULL,
+                GENDER TEXT NOT NULL,
+                ETHNICITY TEXT NOT NULL,
+                BIRTHATE TEXT NOT NULL)";
+
+
+                string createTableQuery2 = @"
+                CREATE TABLE IF NOT EXISTS MEASUREMENTS(
+                ID Integer PRIMARY KEY AUTOINCREMENT
+                Weight Integer KEY  NULL
+
+
+
+                )";
+                connection.Open();
+                
+
+
+                using (var command1 = connection.CreateCommand())
+                {
+                    command1.CommandText = createTableQuery;
+                    command1.ExecuteNonQuery();
+                }
+            }
+        }
+        
         // User Operations
         public async Task<User> CreateUserAsync(User user)
         {
