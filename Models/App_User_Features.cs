@@ -5,10 +5,6 @@ namespace Vidi_Health.Models
 {
     internal class App_User_Features
     {
-        private static readonly List<The_Complex_Measurements> complex_Measurements= new();
-        public List<The_Measurements> Measurements { get; set; } = new();
-        public List<The_Complex_Measurements> complex_measurements { get; set; } = complex_Measurements;
-
 
         public enum MeasurementType
         {
@@ -20,7 +16,7 @@ namespace Vidi_Health.Models
         public class The_User
         {
             [Key] //Account ID
-            public int Id { get; set; }
+            public static int Id { get; set; }
 
             [Required,NotNull,MaxLength(45)]
             public string Name { get; set; }
@@ -31,22 +27,31 @@ namespace Vidi_Health.Models
             [Required]
             public string Mail_Adress { get; set; }
 
+            public The_Measurements user_measurement = new The_Measurements(Id);
+        
+            public The_Complex_Measurements user_complexmeasure = new The_Complex_Measurements(Id);
 
+            public The_Personal_Info User_Info = new The_Personal_Info(Id);
         }
 
-        public class The_Personal_Info 
-        { 
-
+        public  class The_Personal_Info(int Id) 
+        {
+            private int Id = Id;
             public DateTime DateOfBirth { get; set; }        
         
             public int Age { get; set; }
 
             public Ethnicity User_Ethnic {  get; set; }
 
+            public Gender gender { get; set; }
+
+            public ActivityLevel activityLevel { get; set; }
+
+
             public enum Gender
             {
-                Woman =0,
-                Man =1,
+                Female =0,
+                Male =1,
                 Empty = 2,
 
             }
@@ -72,12 +77,15 @@ namespace Vidi_Health.Models
                 ModeratelyActive = 2, //1.55 Moderate exercise/sports 3-5 days/week
                 VeryActive = 3, //1.725 Hard exercise/sports 6-7 days a week
                 SuperActive = 4 //1.9 Very hard exercise/sports & physical job or 2x training
+                
             }
         }
 
 
-        public class The_Measurements 
+        public class The_Measurements(int Id) 
         {
+            public int Id = Id;
+
             public MeasurementType Type { get; set; }
             //System.Half Floatin bir küçüğü, 2 byte ve onalık gösterim sağlayabiliyor
             [Required,NotNull]
@@ -102,13 +110,18 @@ namespace Vidi_Health.Models
             public float SkinfoldAbdominal {get; set;}
 
             [Required, NotNull]
-            public float Skinfoldthigh {  set; get; }
+            public float SkinfoldThigh {  set; get; }
+            
+            [Required,NotNull]
+            public float SkinfoldTriceps { set; get; }
 
             [Required, NotNull]
             public float SkinfoldSuprailiac { set; get; }
 
             [Required, NotNull]
             public float SkinfoldSubscapular { set; get; }
+            [Required,NotNull]
+            public float SkinfoldMixadilary { set; get; }
 
             public DateTime MeasureTime { set; get; }
 
@@ -116,8 +129,9 @@ namespace Vidi_Health.Models
 
         }
 
-        public class The_Complex_Measurements
+        public class The_Complex_Measurements(int Id )
         {
+            public int Id = Id;
             //Hesaplanan Yağ Oranı
             public double BodyFatPercentage { get; set; }
 
@@ -144,7 +158,12 @@ namespace Vidi_Health.Models
             {
                 NavyFormula = 0,
                 JacksonPollock3 = 1,
-                JacksonPollock7 = 2
+                JacksonPollock7 = 2,
+                TDEE =3,
+                CalculateBmr = 4,
+                CaloricNeeds = 5,
+                CalculateBodyfat = 6,
+                CalculateBmrWithBodyFat = 7
             }
 
         }
