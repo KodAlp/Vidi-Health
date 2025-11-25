@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Vidi_Health.Models
 {
-    internal class App_User_Features
+    public class App_User_Features
     {
 
         public enum MeasurementType
@@ -21,31 +21,33 @@ namespace Vidi_Health.Models
             [Required,NotNull,MaxLength(45)]
             public string Name { get; set; }
 
+            [Required, NotNull, MaxLength(60)]
+            public string Password { get; set; }
 
             public DateTime AccountCreation {  get; set; }
 
             [Required]
             public string Mail_Adress { get; set; }
 
-            public The_Measurements user_measurement = new The_Measurements(Id);
+            public The_Measurements user_measurement = new(Id);
         
-            public The_Complex_Measurements user_complexmeasure = new The_Complex_Measurements(Id);
+            public The_Complex_Measurements user_complexmeasure = new (Id);
 
-            public The_Personal_Info User_Info = new The_Personal_Info(Id);
+            public The_Personal_Info User_Info = new (Id);
         }
 
         public  class The_Personal_Info(int Id) 
         {
-            private int Id = Id;
+             int Id = Id;
             public DateTime DateOfBirth { get; set; }        
         
             public int Age { get; set; }
 
             public Ethnicity User_Ethnic {  get; set; }
 
-            public Gender gender { get; set; }
+            public Gender Gender_ { get; set; }
 
-            public ActivityLevel activityLevel { get; set; }
+            public ActivityLevel ActivityLevel_ { get; set; }
 
 
             public enum Gender
