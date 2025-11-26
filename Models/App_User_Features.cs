@@ -6,7 +6,7 @@ namespace Vidi_Health.Models
     public class App_User_Features
     {
 
-        public enum MeasurementType
+        public enum MeasurementType    
         {
             NavyFormula = 0,        // Tape measure method
             JacksonPollock3 = 1,    // 3-point caliper
@@ -70,6 +70,7 @@ namespace Vidi_Health.Models
                 SouthAsian = 7,
                 EastAsian = 8,
                 Mixed = 9,
+                NaN1111 = 10,
             }
 
             public enum ActivityLevel
