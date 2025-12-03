@@ -15,11 +15,12 @@ namespace Vidi_Health.Services.Database_Services
 
                     var cmd1 = connection.CreateCommand();
                     cmd1.CommandText = @"CREATE TABLE IF NOT EXISTS  Users
-                    (Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    (
+                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                      Name TEXT NOT NULL,
                      Mail TEXT UNIQUE,
                      Password TEXT UNIQUE,
-                     CreationTime DATETIME,)";
+                     CreationTime DATETIME)";
 
                     var cmd2 = connection.CreateCommand();
 
@@ -58,6 +59,7 @@ namespace Vidi_Health.Services.Database_Services
                     cmd2.ExecuteNonQuery();
                     cmd3.ExecuteNonQuery();
 
+                     connection.Close();
                 }
 
 
@@ -342,14 +344,78 @@ namespace Vidi_Health.Services.Database_Services
             return user;
         }
         //        
-        public async Task<bool> DeleteUserAsync(int userId);
+        public async Task<bool> DeleteUserAsync(int userId)
+        {
+            
+            using (var connection = new SqliteConnection(connectionString)) 
+            { 
+                await connection.OpenAsync();
 
-        public async Task<List<App_User_Features.The_User>> Get_User_All_Info_Async(int userId);
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "DELETE FROM Users where Id = @ID";
+                    command.Parameters.AddWithValue("@ID", userId);
+
+                    int deletedrow =command.ExecuteNonQuery();
+                    Console.WriteLine($"deleted row: {deletedrow}");
+
+                }
+                connection.Close();
+                return true;
+            }
+        }
+
+        //tamamlanacak
+        public async Task<List<App_User_Features.The_User>> Get_User_All_Info_Async(int userId) 
+        {
+            List<App_User_Features.The_User> Userss_ = [];
+
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                await connection.OpenAsync();
+                var command1 = connection.CreateCommand();
+                var command2 = connection.CreateCommand();
+                var command3 = connection.CreateCommand();
+
+                command1.CommandText = "SELECT Id,Name,Mail,Password,CreationTime FROM Users";
+                command2.CommandText = "SELECT Measurement_id, Measurement_time, Weight,Height,Waist,Neck," +
+                    "Hip,Chest,Abdominal,Thigh,Triceps,Suprailiac, Subskapular,Mixodilary FROM Measurements";
+                command3.CommandText = "SELECT Measurement_id2 ,Measurement_time,BodyFat,LeanBodyMass, FatMass , Bmr,TDEE,Measurement_type ";
+
+
+            }
+            return Userss_; 
+        
+        }
 
         //measurement id nin kullanılacağı task
-        public async Task<App_User_Features.The_Measurements?> GetLatestMeasurementAsync(int userId, int measuringdate);
+        public async Task<App_User_Features.The_User> GetLatestMeasurementAsync(int userId) 
+        {
+            App_User_Features.The_User user = new();
+
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                var command1 = connection.CreateCommand();
+                var command2 = connection.CreateCommand();
+
+                command1.CommandText = "SELECT Measurement_id, Measurement_time, Weight,Height,Waist," +
+                    "Neck, Hip,Chest,Abdominal,Thigh,Triceps,Suprailiac, Subskapular,Mixodilary FROM Measurements where Id = @ID";
+                command2.CommandText = "SELECT Measurement_id2 ,Measurement_time,BodyFat,LeanBodyMass, FatMass , Bmr,TDEE,Measurement_type where Id = @ID";
+
+                command1.Parameters.AddWithValue("@ID", userId);
+                command2.Parameters.AddWithValue("@ID", userId);
+
+                //reader kısmı eklenecek
 
 
+
+
+                connection.Close();
+            }
+            return user;
+        }
         // Database operations
         public void InitializeDatabase()
         {

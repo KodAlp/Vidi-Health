@@ -58,6 +58,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.8" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
 		  <PrivateAssets>all</PrivateAssets>
@@ -69,8 +70,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Pages\App_enter.xaml.cs">
-	    <DependentUpon>App_enter.xaml</DependentUpon>
+	  <Compile Update="App_Entrance_Page.xaml.cs">
+	    <DependentUpon>App_Entrance_Page.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Data_Collector_Page.xaml.cs">
+	    <DependentUpon>Data_Collector_Page.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\Hall_Page.xaml.cs">
 	    <DependentUpon>Hall_Page.xaml</DependentUpon>
@@ -78,7 +82,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\App_enter.xaml">
+	  <MauiXaml Update="Pages\Data_Collector_Page.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Hall_Page.xaml">

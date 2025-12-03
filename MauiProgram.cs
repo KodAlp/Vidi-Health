@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 
 namespace Vidi_Health
 {
@@ -19,7 +20,7 @@ namespace Vidi_Health
                 FileSystem.AppDataDirectory,
                 "diet_tracker.db");
 
-            builder.UseMauiApp<App>();
+            builder.UseMauiApp<App>().UseMauiCommunityToolkit(); ;
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

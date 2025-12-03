@@ -11,7 +11,7 @@ namespace Vidi_Health.Services
           
                 if (Process == App_User_Features.The_Complex_Measurements.Calculation_type.CalculateBmr)
                 {
-                    if ((int)user.User_Info.Gender != 2 || user.user_measurement.Weight != -1 || user.user_measurement.Height != -1 || user.User_Info.Age == -1)
+                    if ((int)user.User_Info.Gender_ != 2 || user.user_measurement.Weight != -1 || user.user_measurement.Height != -1 || user.User_Info.Age == -1)
                         return true;
                     return false;
                 }
@@ -40,8 +40,8 @@ namespace Vidi_Health.Services
                 // A && B == (A && B) oluyor
                 else if (Process == App_User_Features.The_Complex_Measurements.Calculation_type.NavyFormula)
                 {
-                    if (user.user_measurement.Neck_Measure != -1 || (int)user.User_Info.Gender != -1 ||
-                        user.user_measurement.Waist_Measure != -1 || user.user_measurement.Hip_Measure != -1 && user.User_Info.Gender == App_User_Features.The_Personal_Info.Gender.Female)
+                    if (user.user_measurement.Neck_Measure != -1 || (int)user.User_Info.Gender_ != -1 ||
+                        user.user_measurement.Waist_Measure != -1 || user.user_measurement.Hip_Measure != -1 && user.User_Info.Gender_ == App_User_Features.The_Personal_Info.Gender.Female)
                         return true;
                 return false;        
                 }
@@ -49,8 +49,8 @@ namespace Vidi_Health.Services
                 else if (Process == App_User_Features.The_Complex_Measurements.Calculation_type.JacksonPollock3)
                 {
                     if (user.user_measurement.SkinfoldAbdominal != -1 ||user.User_Info.Age == -1 || 
-                        user.user_measurement.SkinfoldChest != -1 && user.user_measurement.SkinfoldThigh!= -1 && user.User_Info.Gender == App_User_Features.The_Personal_Info.Gender.Male||
-                        user.user_measurement.SkinfoldTriceps != -1 && user.user_measurement.SkinfoldSuprailiac != -1 && user.User_Info.Gender == App_User_Features.The_Personal_Info.Gender.Female
+                        user.user_measurement.SkinfoldChest != -1 && user.user_measurement.SkinfoldThigh!= -1 && user.User_Info.Gender_ == App_User_Features.The_Personal_Info.Gender.Male||
+                        user.user_measurement.SkinfoldTriceps != -1 && user.user_measurement.SkinfoldSuprailiac != -1 && user.User_Info.Gender_ == App_User_Features.The_Personal_Info.Gender.Female
                         )
                         return true;
                     return false;
@@ -94,12 +94,12 @@ namespace Vidi_Health.Services
                     if (is_user_valid(user) == false)
                         throw new ArgumentException("Please give proper measurements for the calculation!");
 
-                    if (user.User_Info.Gender == App_User_Features.The_Personal_Info.Gender.Male)
+                    if (user.User_Info.Gender_ == App_User_Features.The_Personal_Info.Gender.Male)
                     {
                         float result = MifflinStJeorMale(user.user_measurement.Weight,user.user_measurement.Height, user.User_Info.Age);
                         return result;
                     }
-                    else if (user.User_Info.Gender == App_User_Features.The_Personal_Info.Gender.Female)
+                    else if (user.User_Info.Gender_ == App_User_Features.The_Personal_Info.Gender.Female)
                     {
                         float result = MifflinStJeorFemale(user.user_measurement.Weight, user.user_measurement.Height, user.User_Info.Age);
                         return result;
@@ -213,13 +213,13 @@ namespace Vidi_Health.Services
                 {
                     user.user_complexmeasure.Method = App_User_Features.The_Complex_Measurements.Calculation_type.NavyFormula;
 
-                    if (user.User_Info.Gender == App_User_Features.The_Personal_Info.Gender.Male)
+                    if (user.User_Info.Gender_ == App_User_Features.The_Personal_Info.Gender.Male)
                     {  
                         if(is_user_valid(user) == true)
                              return NavyMale(user.user_measurement.Waist_Measure,user.user_measurement.Neck_Measure, user.user_measurement.Height);
                         return 0;
                     }
-                    else if (user.User_Info.Gender == App_User_Features.The_Personal_Info.Gender.Female)
+                    else if (user.User_Info.Gender_ == App_User_Features.The_Personal_Info.Gender.Female)
                     {
                         if (is_user_valid(user) == true)
                             return NavyFemale(user.user_measurement.Waist_Measure,
@@ -253,11 +253,11 @@ namespace Vidi_Health.Services
                     if (is_user_valid(user) != true)
                         throw new Exception("Lütfen değerleri  kontrol ediniz.");
 
-                    if (user.User_Info.Gender == App_User_Features.The_Personal_Info.Gender.Male)
+                    if (user.User_Info.Gender_ == App_User_Features.The_Personal_Info.Gender.Male)
                          return JP3Male(user.user_measurement.SkinfoldChest, user.user_measurement.SkinfoldAbdominal,
                             user.user_measurement.SkinfoldThigh, user.User_Info.Age);
                        
-                    else if (user.User_Info.Gender == App_User_Features.The_Personal_Info.Gender.Female)
+                    else if (user.User_Info.Gender_ == App_User_Features.The_Personal_Info.Gender.Female)
                         return JP3Female(user.user_measurement.SkinfoldTriceps, user.user_measurement.SkinfoldAbdominal,
                             user.user_measurement.SkinfoldSuprailiac, user.User_Info.Age);                     
                     else
@@ -286,10 +286,10 @@ namespace Vidi_Health.Services
                     jp7 = user.user_measurement.SkinfoldTriceps + user.user_measurement.SkinfoldAbdominal + user.user_measurement.SkinfoldThigh +
                         user.user_measurement.SkinfoldSuprailiac + user.user_measurement.SkinfoldSubscapular + user.user_measurement.SkinfoldMixadilary
                         + user.user_measurement.SkinfoldChest;
-                    if (user.User_Info.Gender == App_User_Features.The_Personal_Info.Gender.Female)
+                    if (user.User_Info.Gender_ == App_User_Features.The_Personal_Info.Gender.Female)
                         return JP7Female(jp7, user.User_Info.Age);
 
-                    else if (user.User_Info.Gender == App_User_Features.The_Personal_Info.Gender.Male)
+                    else if (user.User_Info.Gender_ == App_User_Features.The_Personal_Info.Gender.Male)
                         return JP7Male(jp7, user.User_Info.Age);
                     
                     else

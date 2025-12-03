@@ -32,7 +32,7 @@ namespace Vidi_Health.Services
             Task<List<App_User_Features.The_User>> Get_User_All_Info_Async(int userId);
             
             //measurement id nin kullanılacağı task
-            Task<App_User_Features.The_Measurements?> GetLatestMeasurementAsync(int userId,int measuringdate);
+            Task<App_User_Features.The_User> GetLatestMeasurementAsync(int userId);
 
 
             /*Ardanın C frameworkü alınınca yapılacak

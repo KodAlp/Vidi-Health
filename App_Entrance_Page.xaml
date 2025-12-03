@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Vidi_Health.MainPage"
+             Title ="">
+
+    <ScrollView>
+        <toolkit:DockLayout>
+
+            <!-- Başlık -->
+            <Label
+                Text="Vidi Health"
+                FontAttributes="Bold"
+                FontSize="Header"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                HorizontalOptions="Center"
+                toolkit:DockLayout.DockPosition="Top"
+                Margin="0,30,0,0"
+                />
+
+            <VerticalStackLayout
+                Padding="30"
+                Spacing="5"
+                VerticalOptions="Center"
+                HorizontalOptions="Fill"
+                toolkit:DockLayout.DockPosition="Left"
+                >
+
+               
+                <!--Kullanıcı adı -->
+                <Label
+                    Padding="30"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    Text="Kullanıcı adı"
+                    MaximumWidthRequest="500"
+                    HorizontalOptions="Start"
+                    />
+
+                <Entry
+                    Margin="22,0,0,0"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    MinimumWidthRequest="300"
+                    MaximumHeightRequest="20"
+                    />
+
+                <Label
+                    Padding="30"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    Text="Şifre"
+                    HorizontalOptions="Start"
+                    MaximumWidthRequest="500"/>
+
+                <Entry
+                    MinimumWidthRequest="300"
+                    MaximumHeightRequest="20"
+                    Margin="22,0,0,0"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start"
+                    />
+                <HorizontalStackLayout   
+                    HorizontalOptions="Start"
+                    >
+                    <CheckBox 
+                    IsChecked="False"
+                    Margin="20,0,0,0"
+                    HorizontalOptions="Start"
+                    />
+                    <Label    
+                    Text="Şifreyi göster"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"    
+                    />
+
+                </HorizontalStackLayout>
+            
+                <Button
+                    Margin="22,0,0,0"
+                    BackgroundColor="DarkGrey"
+                    MinimumWidthRequest="300"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Fill"
+                    Text="Google ile bağlan">
+
+                </Button>
+
+                <!-- Başla Butonu -->
+                <Button
+                    x:Name="StartButton"
+                    Text="Hadi Başlayalım!"
+                    SemanticProperties.Hint="Kullanıcı kaydına geç"
+                    Clicked="OnStartClicked"
+                    BackgroundColor="#423416"
+                    TextColor="Black"
+                    FontSize="18"
+                    Margin="0,40,0,0"
+                    HeightRequest="60"
+                    CornerRadius="15"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Fill"/>
+                <!-- Bilgi Metni -->
+            
+                <Label
+                    Text="Kişisel bilgileriniz cihazınızda kullanılmak üzere kayıt tutulacaktır"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    VerticalOptions="Fill"
+                    Margin="0,20,0,0"
+                    LineHeight="1.5"
+                    TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray500}}"/>
+
+            </VerticalStackLayout>
+
+            <VerticalStackLayout
+                toolkit:DockLayout.DockPosition="Right"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <Image
+                     Source="vidihealth_icon.png"
+                     MaximumWidthRequest="320"
+                     MaximumHeightRequest="320">
+                </Image>
+            </VerticalStackLayout>
+        </toolkit:DockLayout>
+    </ScrollView>
+
+</ContentPage>  
