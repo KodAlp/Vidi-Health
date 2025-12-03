@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Vidi_Health.Pages.App_enter"
+             Title="">
+
+        
+
+    <ScrollView>
+        
+        <VerticalStackLayout Padding="20" Spacing=" 15">
+
+            <Label Text="Öncelikle sizi tanıyalım!" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,20,0,30"/>
+
+            <Label Text="İsminiz:" FontSize="16"/>
+            <Entry x:Name="NameEntry"
+                   MaxLength ="50"
+                   HeightRequest="36"
+                   WidthRequest="300"
+                   HorizontalOptions="Start"
+             />
+
+            <!-- Cinsiyet -->
+
+            <Label Text="Cinsiyetiniz: (formüller değişecektir)" FontSize="16" Margin="0,10,0,0"/>
+            <Picker x:Name="GenderPicker"
+                HeightRequest="36"
+                HorizontalOptions="Start"
+                WidthRequest="300">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Erkek</x:String>
+                        <x:String>Kadın</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+                <!-- Etnik Köken -->
+            <Label Text="Etnik Köken:" FontSize="16" Margin="0,10,0,0"/>
+            <Picker x:Name="EthnicityPicker"
+                HeightRequest="36"
+                HorizontalOptions="Start"
+                WidthRequest="300">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Kafkas</x:String>
+                        <x:String>Asya</x:String>
+                        <x:String>Afrika</x:String>
+                        <x:String>Hispanik</x:String>
+                        <x:String>Orta Doğu</x:String>
+                        <x:String>Yerli Amerikan</x:String>
+                        <x:String>Pasifik Adaları</x:String>
+                        <x:String>Güney Asya</x:String>
+                        <x:String>Doğu Asya</x:String>
+                        <x:String>Karışık</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+             </Picker>
+
+            <Label Text="Doğum tarihi:" FontSize="16" Margin="0,10,0,0"/>
+            <DatePicker x:Name="BirthDatePicker"
+                Format="dd/MM/yyyy"
+                WidthRequest="300"
+                HeightRequest="36"
+                HorizontalOptions="Start"/>
+
+            <!-- Kaydet Butonu -->
+            <Button Text="Devam Et"
+                x:Name="SaveButton"
+                Clicked="OnSaveClicked"
+                BackgroundColor="#8F670B"
+                TextColor="Grey"
+                FontSize="18"
+                Margin="0,30,0,0"
+                HeightRequest="50"
+                WidthRequest="120"
+                HorizontalOptions="Start"
+                CornerRadius="10"/>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+    
