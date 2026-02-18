@@ -9,6 +9,8 @@ namespace Vidi_Health
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(App_enter), typeof(App_enter));
+            Routing.RegisterRoute(nameof(Hall_Page), typeof(Hall_Page));
+
         }
     }
 }

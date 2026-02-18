@@ -1,26 +1,70 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Vidi_Health.Pages.NewPage1"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Vidi_Health.Pages.Hall_Page"
              Title="">
     <toolkit:DockLayout>
-    <HorizontalStackLayout toolkit:DockLayout.DockPosition="Top"
-                               HorizontalOptions="Fill"
-                               MaximumHeightRequest="60"
-                               MinimumHeightRequest="30">
-        <Button Text="🛒+0000 "
-                Clicked="Button_Clicked"
-                HorizontalOptions="End"
-                VerticalOptions="Center">
+
+        <toolkit:DockLayout.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Left"  Swiped="OnSwipedLeft"/>
+            <SwipeGestureRecognizer Direction="Right" Swiped="OnSwipedRight"/>
+        </toolkit:DockLayout.GestureRecognizers>
+        <!-- TOP BAR -->
+        <Grid toolkit:DockLayout.DockPosition="Top"
+              HeightRequest="60"
+              Padding="12,0"
+              ColumnDefinitions="Auto,*,Auto"
+              BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}">
+
+            <!-- Profile Circle (Left) -->
+            <Border Grid.Column="0"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    StrokeShape="Ellipse"
+                    Stroke="{StaticResource Primary}"
+                    StrokeThickness="2"
+                    BackgroundColor="{StaticResource Secondary}"
+                    VerticalOptions="Center">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnProfileTapped"/>
+                </Border.GestureRecognizers>
+                <Label Text="👤"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="18"/>
+            </Border>
+
+            <!-- Cart Button (Right) -->
+            <Button Grid.Column="2"
+                    Text="🛒 +0000"
+                    Clicked="OnCartClicked"
+                    VerticalOptions="Center"
+                    FontSize="13"
+                    Padding="10,0"
+                    HeightRequest="38"/>
+        </Grid>
+
+        <!-- BOTTOM NAV BAR -->
+        <Grid toolkit:DockLayout.DockPosition="Bottom"
+              HeightRequest="60"
+              ColumnDefinitions="*,*,*,*,*"
+              BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}">
+
+            <Button Grid.Column="0" Text="🏠" Clicked="OnNavHome"     BackgroundColor="Transparent" TextColor="{StaticResource Primary}" FontSize="22"/>
+            <Button Grid.Column="1" Text="📊" Clicked="OnNavStats"    BackgroundColor="Transparent" TextColor="{StaticResource Primary}" FontSize="22"/>
+            <Button Grid.Column="2" Text="➕" Clicked="OnNavAdd"      BackgroundColor="Transparent" TextColor="{StaticResource Primary}" FontSize="22"/>
+            <Button Grid.Column="3" Text="🛒" Clicked="OnNavMarket"   BackgroundColor="Transparent" TextColor="{StaticResource Primary}" FontSize="22"/>
+            <Button Grid.Column="4" Text="⚙️" Clicked="OnNavSettings" BackgroundColor="Transparent" TextColor="{StaticResource Primary}" FontSize="22"/>
+        </Grid>
+
+        <!-- MAIN CONTENT -->
+        <ScrollView toolkit:DockLayout.DockPosition="None">
+            <VerticalStackLayout Padding="16" Spacing="12">
 
 
-        </Button>
-        
-        
-    </HorizontalStackLayout>
-         
-         <StackLayout>
-        </StackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
     </toolkit:DockLayout>
 </ContentPage>

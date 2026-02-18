@@ -6,10 +6,11 @@
              Title ="">
 
     <ScrollView>
-        <toolkit:DockLayout>
+        <toolkit:DockLayout x:Name="Dock_Layout_For_App_Entrance_Page">
 
             <!-- Başlık -->
             <Label
+                x:Name="Enterance_Label_Vidi"
                 Text="Vidi Health"
                 FontAttributes="Bold"
                 FontSize="Header"
@@ -21,6 +22,7 @@
                 />
 
             <VerticalStackLayout
+                x:Name="Vertical_For_App_Entrance"
                 Padding="30"
                 Spacing="5"
                 VerticalOptions="Center"
@@ -33,13 +35,13 @@
                 <Label
                     Padding="30"
                     FontSize="Large"
-                    FontAttributes="Bold"
                     Text="Kullanıcı adı"
                     MaximumWidthRequest="500"
                     HorizontalOptions="Start"
                     />
 
                 <Entry
+                    
                     Margin="22,0,0,0"
                     VerticalOptions="Start"
                     HorizontalOptions="Start"
@@ -50,7 +52,6 @@
                 <Label
                     Padding="30"
                     FontSize="Large"
-                    FontAttributes="Bold"
                     Text="Şifre"
                     HorizontalOptions="Start"
                     MaximumWidthRequest="500"/>
@@ -120,11 +121,13 @@
                 toolkit:DockLayout.DockPosition="Right"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
+                <!--
                 <Image
                      Source="vidihealth_icon.png"
                      MaximumWidthRequest="320"
                      MaximumHeightRequest="320">
                 </Image>
+               -->
             </VerticalStackLayout>
         </toolkit:DockLayout>
     </ScrollView>

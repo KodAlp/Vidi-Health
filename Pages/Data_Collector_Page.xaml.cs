@@ -38,8 +38,8 @@ public partial class App_enter : ContentPage
 
         await DisplayAlert("Kayýt Baþarýlý", message, "Tamam");
         //DisplayAlert ekrana popup çýkarýyor
-        // Sonraki sayfaya geç (þimdilik MainPage'e dön)
-        await Navigation.PopAsync();
+      
+        await Shell.Current.GoToAsync(nameof(Hall_Page));
     }
 
    
