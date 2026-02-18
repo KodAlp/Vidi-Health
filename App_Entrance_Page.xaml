@@ -3,133 +3,89 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Vidi_Health.MainPage"
-             Title ="">
+             BackgroundColor="BlanchedAlmond"
+             Title="">
 
-    <ScrollView>
-        <toolkit:DockLayout x:Name="Dock_Layout_For_App_Entrance_Page">
+    <Grid RowDefinitions="*,Auto">
 
-            <!-- Başlık -->
-            <Label
-                x:Name="Enterance_Label_Vidi"
-                Text="Vidi Health"
-                FontAttributes="Bold"
-                FontSize="Header"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1"
+        <!-- CENTER: Animation Area + Buttons -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+                VerticalOptions="Center"
                 HorizontalOptions="Center"
-                toolkit:DockLayout.DockPosition="Top"
-                Margin="0,30,0,0"
-                />
+                Spacing="16"
+                Padding="32,40">
 
-            <VerticalStackLayout
-                x:Name="Vertical_For_App_Entrance"
-                Padding="30"
-                Spacing="5"
-                VerticalOptions="Center"
-                HorizontalOptions="Fill"
-                toolkit:DockLayout.DockPosition="Left"
-                >
+                <!-- Animation Placeholder -->
+                <Border
+                    WidthRequest="260"
+                    HeightRequest="260"
+                    StrokeShape="RoundRectangle 20"
+                    Stroke="{StaticResource Gray200}"
+                    StrokeThickness="1"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center">
+                    <!-- Lottie veya custom animation buraya gelecek -->
+                </Border>
 
-               
-                <!--Kullanıcı adı -->
-                <Label
-                    Padding="30"
-                    FontSize="Large"
-                    Text="Kullanıcı adı"
-                    MaximumWidthRequest="500"
-                    HorizontalOptions="Start"
-                    />
-
-                <Entry
-                    
-                    Margin="22,0,0,0"
-                    VerticalOptions="Start"
-                    HorizontalOptions="Start"
-                    MinimumWidthRequest="300"
-                    MaximumHeightRequest="20"
-                    />
-
-                <Label
-                    Padding="30"
-                    FontSize="Large"
-                    Text="Şifre"
-                    HorizontalOptions="Start"
-                    MaximumWidthRequest="500"/>
-
-                <Entry
-                    MinimumWidthRequest="300"
-                    MaximumHeightRequest="20"
-                    Margin="22,0,0,0"
-                    VerticalOptions="Start"
-                    HorizontalOptions="Start"
-                    />
-                <HorizontalStackLayout   
-                    HorizontalOptions="Start"
-                    >
-                    <CheckBox 
-                    IsChecked="False"
-                    Margin="20,0,0,0"
-                    HorizontalOptions="Start"
-                    />
-                    <Label    
-                    Text="Şifreyi göster"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Start"    
-                    />
-
-                </HorizontalStackLayout>
-            
+                <!-- Google Button -->
                 <Button
-                    Margin="22,0,0,0"
-                    BackgroundColor="DarkGrey"
-                    MinimumWidthRequest="300"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Fill"
-                    Text="Google ile bağlan">
+                    Text="Google ile Giriş Yap"
+                    Clicked="OnGoogleLoginClicked"
+                    BackgroundColor="#FFFFFF"
+                    TextColor="#3C3C3C"
+                    BorderColor="#DADADA"
+                    BorderWidth="1"
+                    CornerRadius="12"
+                    FontSize="15"
+                    HeightRequest="52"
+                    WidthRequest="300"
+                    HorizontalOptions="Center"/>
 
-                </Button>
-
-                <!-- Başla Butonu -->
+                <!-- Apple Button -->
                 <Button
-                    x:Name="StartButton"
-                    Text="Hadi Başlayalım!"
-                    SemanticProperties.Hint="Kullanıcı kaydına geç"
-                    Clicked="OnStartClicked"
-                    BackgroundColor="#423416"
-                    TextColor="Black"
-                    FontSize="18"
-                    Margin="0,40,0,0"
-                    HeightRequest="60"
-                    CornerRadius="15"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Fill"/>
-                <!-- Bilgi Metni -->
-            
+                    Text="Apple ile Giriş Yap"
+                    Clicked="OnAppleLoginClicked"
+                    BackgroundColor="#000000"
+                    TextColor="#FFFFFF"
+                    CornerRadius="12"
+                    FontSize="15"
+                    HeightRequest="52"
+                    WidthRequest="300"
+                    HorizontalOptions="Center"/>
+
+                <!-- Manual Login Label -->
                 <Label
-                    Text="Kişisel bilgileriniz cihazınızda kullanılmak üzere kayıt tutulacaktır"
-                    FontSize="14"
                     HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    VerticalOptions="Fill"
-                    Margin="0,20,0,0"
-                    LineHeight="1.5"
-                    TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray500}}"/>
+                    Margin="0,8,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Hesabın var mı? "/>
+                            <Span Text="Giriş yap"
+                                  TextColor="{StaticResource Primary}"
+                                  FontAttributes="Bold"
+                                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnManualLoginTapped"/>
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
 
             </VerticalStackLayout>
+        </ScrollView>
 
-            <VerticalStackLayout
-                toolkit:DockLayout.DockPosition="Right"
-                VerticalOptions="Center"
-                HorizontalOptions="Center">
-                <!--
-                <Image
-                     Source="vidihealth_icon.png"
-                     MaximumWidthRequest="320"
-                     MaximumHeightRequest="320">
-                </Image>
-               -->
-            </VerticalStackLayout>
-        </toolkit:DockLayout>
-    </ScrollView>
+        <!-- BOTTOM: Warning Label -->
+        <Label
+            Grid.Row="1"
+            Text="Kişisel bilgileriniz cihazınızda kullanılmak üzere kayıt tutulacaktır"
+            FontSize="12"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray500}}"
+            Margin="24,0,24,20"/>
 
-</ContentPage>  
+    </Grid>
+
+</ContentPage>

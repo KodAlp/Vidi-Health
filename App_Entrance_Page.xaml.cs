@@ -8,11 +8,19 @@ namespace Vidi_Health
             InitializeComponent();
         }
 
-        private async void OnStartClicked(object sender, EventArgs e)
+        private async void OnGoogleLoginClicked(object sender, EventArgs e)
         {
-            // UserRegistrationPage'e git
+            // Google OAuth buraya gelecek
+        }
+
+        private async void OnAppleLoginClicked(object sender, EventArgs e)
+        {
+            // Apple Sign-In buraya gelecek
+        }
+
+        private async void OnManualLoginTapped(object sender, EventArgs e)
+        {
             await Shell.Current.GoToAsync(nameof(App_enter));
         }
     }
-
 }
