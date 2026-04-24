@@ -84,6 +84,7 @@ public partial class App_enter : ContentPage
 
     private async Task OnSaveClicked()
     {
+        await Shell.Current.GoToAsync(nameof(Hall_Page));
         // DB kayýt buraya gelecek
         //await Shell.Current.GoToAsync("//Home");
     }

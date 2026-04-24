@@ -70,8 +70,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="App_Entrance_Page.xaml.cs">
+	  <Compile Update="Pages\App_Entrance_Page.xaml.cs">
 	    <DependentUpon>App_Entrance_Page.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Asisstants_Page.xaml.cs">
+	    <DependentUpon>Asisstants_Page.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\Data_Collector_Page.xaml.cs">
 	    <DependentUpon>Data_Collector_Page.xaml</DependentUpon>
@@ -79,9 +82,21 @@
 	  <Compile Update="Pages\Hall_Page.xaml.cs">
 	    <DependentUpon>Hall_Page.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\Market_Page.xaml.cs">
+	    <DependentUpon>Market_Page.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Profile_Page.xaml.cs">
+	    <DependentUpon>Profile_Page.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Settings_Page.xaml.cs">
+	    <DependentUpon>Settings_Page.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\Asisstants_Page.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\CalculationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -89,6 +104,15 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Hall_Page.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Market_Page.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Profile_Page.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Settings_Page.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
@@ -100,7 +124,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Encryption\" />
+	  <Folder Include="Services\Encryption\" />
 	</ItemGroup>
 
 </Project>
